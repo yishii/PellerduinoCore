@@ -6,7 +6,9 @@
 CROSS_ENV	=  propeller-elf-
 CC		=  $(CROSS_ENV)gcc
 CPP		=  $(CROSS_ENV)g++
-CFLAGS		=  -Os -I. -fno-exceptions
+CFLAGS		=  -Os -I. -fno-exceptions -mlmm -lpthread -pthread
+CPPFLAGS	=  -Os -I. -fno-exceptions -mlmm -lpthread -pthread
+LCFLAGS		=  -pthread -lpthread
 TARGET		=  target.elf
 OBJS		=  main.o
 DOWNLOADER	=  propeller-load
@@ -21,10 +23,10 @@ OBJS		+= $(COMMONOBJS)
 .c.o:
 	$(CC) $(CFLAGS) -c $<
 .cpp.o:
-	$(CPP) $(CFLAGS) -c $<
+	$(CPP) $(CPPFLAGS) -c $<
 
 $(TARGET) : $(OBJS)
-	$(CC) -o $@ $(OBJS)
+	$(CC) -o $@ $(OBJS) $(LCFLAGS)
 
 
 .PHONY: clean
