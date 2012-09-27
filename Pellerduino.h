@@ -19,8 +19,14 @@ void pinMode(int,int);
 void digitalWrite(int,int);
 int digitalRead(int);
 
-void delay(long);
+void delay(unsigned long);
+void delayMicroseconds(unsigned long);
 
+typedef int boolean;
+typedef unsigned char byte;
+
+#define true		1
+#define false		0
 #define HIGH		1
 #define	LOW		0
 #define	INPUT		0
